@@ -13,10 +13,10 @@ namespace Data.Entities.Building
         public string Name { get; set; }
 
         [Required]
-        public int width { get; set; }
+        public int Width { get; set; }
 
         [Required]
-        public int height { get; set; }
+        public int Height { get; set; }
 
     }
 }

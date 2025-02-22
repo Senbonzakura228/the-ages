@@ -20,10 +20,10 @@ namespace API.Controllers
 
         [HttpGet("getBuildings")]
         [Authorize]
-        public async Task<ActionResult<List<Building>>> GetBuildings()
+        public async Task<ActionResult<List<Building>>> GetBuilding()
         {
             var buildings = await buildingPlacementService.GetBuildings();
-            return buildings != null ? Ok(buildings) : NoContent();
+            return buildings != null ? Ok(buildings) : NotFound();
         }
 
         [HttpPost]
@@ -40,8 +40,8 @@ namespace API.Controllers
                 {
                     userId = userId,
                     buildingId = building.buildingId,
-                    XCoordinate = building.XCoordinate,
-                    YCoordinate = building.YCoordinate
+                    xCoordinate = building.XCoordinate,
+                    yCoordinate = building.YCoordinate
                 });
             return result ? Ok() : BadRequest();
         }

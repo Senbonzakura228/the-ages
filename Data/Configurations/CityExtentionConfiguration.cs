@@ -22,8 +22,8 @@ namespace Data.Configurations
                 Id = index + 1,
                 XCoordinate = e.XCoordinate,
                 YCoordinate = e.YCoordinate,
-                width = e.width,
-                height = e.height
+                Width = e.Width,
+                Height = e.Height
             }));
         }
     }

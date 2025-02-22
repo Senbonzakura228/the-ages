@@ -14,9 +14,9 @@ namespace Data.Entities.City
         [Required] public int YCoordinate { get; set; }
 
         [Required]
-        public int width { get; set; }
+        public int Width { get; set; }
 
         [Required]
-        public int height { get; set; }
+        public int Height { get; set; }
     }
 }

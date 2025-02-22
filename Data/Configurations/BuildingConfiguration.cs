@@ -21,8 +21,8 @@ namespace Data.Configurations
               {
                   Id = index + 1,
                   Name = b.Name,
-                  width = b.width,
-                  height = b.height
+                  Width = b.Width,
+                  Height = b.Height
               }));
         }
     }

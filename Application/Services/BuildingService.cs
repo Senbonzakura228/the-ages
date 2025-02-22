@@ -37,20 +37,20 @@ namespace Application.Services
 
         private bool CheckPlaceAvailability(CityMap cityMap, Building building, BuildingToPlace buildingToPlace)
         {
-            var buildingsInCollision = cityMap.Buildings.Where(b =>
-                ((b.YCoordinate + b.building.height - 1 >= buildingToPlace.YCoordinate + building.height - 1
-                && b.YCoordinate <= buildingToPlace.YCoordinate + building.height - 1)
-                || (Math.Abs(b.YCoordinate - buildingToPlace.YCoordinate) < building.height))
+            var buildingsInCollision = cityMap.buildings.Where(b =>
+                ((b.yCoordinate + b.building.height - 1 >= buildingToPlace.yCoordinate + building.height - 1
+                && b.yCoordinate <= buildingToPlace.yCoordinate + building.height - 1)
+                || (Math.Abs(b.yCoordinate - buildingToPlace.yCoordinate) < building.height))
                 &&
-                ((b.XCoordinate + b.building.width - 1 >= buildingToPlace.XCoordinate + building.width - 1
-                && b.XCoordinate <= buildingToPlace.XCoordinate + building.width - 1)
-                || (Math.Abs(b.XCoordinate - buildingToPlace.XCoordinate) < building.width))
+                ((b.xCoordinate + b.building.width - 1 >= buildingToPlace.xCoordinate + building.width - 1
+                && b.xCoordinate <= buildingToPlace.xCoordinate + building.width - 1)
+                || (Math.Abs(b.xCoordinate - buildingToPlace.xCoordinate) < building.width))
             );
             if (buildingsInCollision.Count() != 0) return false;
 
             HashSet<(int, int)> extensionCells = new HashSet<(int, int)>();
 
-            foreach (var extension in cityMap.Extensions)
+            foreach (var extension in cityMap.extensions)
             {
                 for (int x = extension.XCoordinate; x < extension.XCoordinate + extension.width; x++)
                 {
@@ -61,9 +61,9 @@ namespace Application.Services
                 }
             }
 
-            for (int x = buildingToPlace.XCoordinate; x < buildingToPlace.XCoordinate + building.width; x++)
+            for (int x = buildingToPlace.xCoordinate; x < buildingToPlace.xCoordinate + building.width; x++)
             {
-                for (int y = buildingToPlace.YCoordinate; y < buildingToPlace.YCoordinate + building.height; y++)
+                for (int y = buildingToPlace.yCoordinate; y < buildingToPlace.yCoordinate + building.height; y++)
                 {
                     if (!extensionCells.Contains((x, y)))
                     {

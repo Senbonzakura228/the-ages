@@ -25,26 +25,26 @@ namespace Data.Repositories
 
             return new CityMap
             {
-                Id = map.Id,
-                Extensions = map.Extensions.Select(e =>
+                id = map.Id,
+                extensions = map.Extensions.Select(e =>
                 new Extension
                 {
                     XCoordinate = e.CityExtension.XCoordinate,
                     YCoordinate = e.CityExtension.YCoordinate,
-                    width = e.CityExtension.width,
-                    height = e.CityExtension.height
+                    width = e.CityExtension.Width,
+                    height = e.CityExtension.Height
                 }).ToList(),
-                Buildings = map.Buildings.Select(b =>
+                buildings = map.Buildings.Select(b =>
                 new DAO.CityBuilding
                 {
-                    Id = b.Id,
-                    XCoordinate = b.XCoordinate,
-                    YCoordinate = b.YCoordinate,
+                    id = b.Id,
+                    xCoordinate = b.XCoordinate,
+                    yCoordinate = b.YCoordinate,
                     building = new Building
                     {
-                        Name = b.Building.Name,
-                        width = b.Building.width,
-                        height = b.Building.height
+                        name = b.Building.Name,
+                        width = b.Building.Width,
+                        height = b.Building.Height
                     }
                 }
                 ).ToHashSet()

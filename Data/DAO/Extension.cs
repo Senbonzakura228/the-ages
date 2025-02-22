@@ -1,6 +1,6 @@
 namespace Data.DAO
 {
-    public record Extension
+    public class Extension
     {
         public int XCoordinate { get; set; }
 

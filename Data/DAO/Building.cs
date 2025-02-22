@@ -1,10 +1,10 @@
 namespace Data.DAO
 {
-    public record Building
+    public class Building
     {
         public int id;
 
-        public string Name { get; set; }
+        public string name { get; set; }
 
         public int width { get; set; }
 

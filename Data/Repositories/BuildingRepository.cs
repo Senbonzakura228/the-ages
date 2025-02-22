@@ -17,9 +17,9 @@ namespace Data.Repositories
             var buildings = dbBuildings.Select(b => new Building
             {
                 id = b.Id,
-                Name = b.Name,
-                width = b.width,
-                height = b.height
+                name = b.Name,
+                width = b.Width,
+                height = b.Height
             }).ToList();
 
             return buildings.Any() ? buildings : null;
@@ -34,9 +34,9 @@ namespace Data.Repositories
             var building = new Building
             {
                 id = dbBuilding.Id,
-                Name = dbBuilding.Name,
-                width = dbBuilding.width,
-                height = dbBuilding.height
+                name = dbBuilding.Name,
+                width = dbBuilding.Width,
+                height = dbBuilding.Height
             };
             return building;
         }
@@ -53,8 +53,8 @@ namespace Data.Repositories
                 Id = cityMap.Buildings.Count + 1,
                 UserCityMapId = buildingToPlace.userId,
                 BuildingId = buildingToPlace.buildingId,
-                XCoordinate = buildingToPlace.XCoordinate,
-                YCoordinate = buildingToPlace.YCoordinate
+                XCoordinate = buildingToPlace.xCoordinate,
+                YCoordinate = buildingToPlace.yCoordinate
             });
 
             await dbContext.SaveChangesAsync();
@@ -75,8 +75,8 @@ namespace Data.Repositories
                     Id = cityMap.Buildings.Count + 1,
                     UserCityMapId = b.userId,
                     BuildingId = b.buildingId,
-                    XCoordinate = b.XCoordinate,
-                    YCoordinate = b.YCoordinate
+                    XCoordinate = b.xCoordinate,
+                    YCoordinate = b.yCoordinate
                 });
             });
 

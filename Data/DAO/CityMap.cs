@@ -1,10 +1,10 @@
 namespace Data.DAO
 {
-    public record CityMap
+    public class CityMap
     {
-        public int Id { get; set; }
-        public List<Extension> Extensions { get; set; }
+        public int id { get; set; }
+        public List<Extension> extensions { get; set; }
 
-        public HashSet<CityBuilding> Buildings { get; set; }
+        public HashSet<CityBuilding> buildings { get; set; }
     }
 }

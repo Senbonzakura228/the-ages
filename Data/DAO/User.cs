@@ -1,6 +1,6 @@
 namespace Data.DAO
 {
-    public record User
+    public class User
     {
         public int id { get; set; }
         public string name { get; set; }
