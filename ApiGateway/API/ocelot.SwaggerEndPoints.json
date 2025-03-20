@@ -1,0 +1,24 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "user-account",
+      "Config": [
+        {
+          "Name": "User Account Service",
+          "Version": "v1",
+          "Url": "http://user-account-service:8080/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "city-map",
+      "Config": [
+        {
+          "Name": "City Map Service",
+          "Version": "v1",
+          "Url": "http://city-map-service:8080/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}

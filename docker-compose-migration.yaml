@@ -1,0 +1,49 @@
+version: '4.34.3'
+services:
+  city-map-migrator:
+    build:
+      context: ./CityMapService
+      dockerfile: Dockerfile
+      target: build
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=CityMapDB;Username=postgres;Password=kjkjrgjwe2354fs
+    depends_on:
+      postgres:
+        condition: service_healthy
+    working_dir: /src
+    entrypoint: [ "dotnet", "ef", "database", "update", "--startup-project", "API/API.csproj", "--project", "Infrastructure/Infrastructure.csproj" ]
+
+  user-account-migrator:
+    build:
+      context: ./UserAccountService
+      dockerfile: Dockerfile
+      target: build
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=UserAccountDB;Username=postgres;Password=kjkjrgjwe2354fs
+    depends_on:
+      postgres:
+        condition: service_healthy
+    working_dir: /src
+    entrypoint: [ "dotnet", "ef", "database", "update", "--startup-project", "API/API.csproj", "--project", "Infrastructure/Infrastructure.csproj" ]
+
+  postgres:
+    container_name: theAgesPostgresDB
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "kjkjrgjwe2354fs"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    command: >
+      bash -c "docker-entrypoint.sh postgres & sleep 5 && psql -U postgres -tc \"SELECT 1 FROM pg_database WHERE datname = 'CityMapDB';\" | grep -q 1 || psql -U postgres -c 'CREATE DATABASE \"CityMapDB\";' && psql -U postgres -tc \"SELECT 1 FROM pg_database WHERE datname = 'UserAccountDB';\" | grep -q 1 || psql -U postgres -c 'CREATE DATABASE \"UserAccountDB\";' && wait"
+volumes:
+  postgres-data:

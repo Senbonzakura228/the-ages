@@ -1,0 +1,110 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/UserAccount/login",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "user-account-service",
+                    "Port": 8080
+                }
+            ],
+            "UpstreamPathTemplate": "/gateway/user-account/login",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "SwaggerKey": "user-account"
+        },
+        {
+            "DownstreamPathTemplate": "/UserAccount/register",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "user-account-service",
+                    "Port": 8080
+                }
+            ],
+            "UpstreamPathTemplate": "/gateway/user-account/register",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "SwaggerKey": "user-account"
+        },
+        {
+            "DownstreamPathTemplate": "/CityMap/city-map",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "city-map-service",
+                    "Port": 8080
+                }
+            ],
+            "UpstreamPathTemplate": "/gateway/citymap",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "SwaggerKey": "city-map",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/BuildingPlacement/buildings",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "city-map-service",
+                    "Port": 8080
+                }
+            ],
+            "UpstreamPathTemplate": "/gateway/buildings",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "SwaggerKey": "city-map",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/BuildingPlacement",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "city-map-service",
+                    "Port": 8080
+                }
+            ],
+            "UpstreamPathTemplate": "/gateway/building-placement",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "SwaggerKey": "city-map",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/BuildingPlacement/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "city-map-service",
+                    "Port": 8080
+                }
+            ],
+            "UpstreamPathTemplate": "/gateway/building-placement/{id}",
+            "UpstreamHttpMethod": [
+                "DELETE"
+            ],
+            "SwaggerKey": "city-map",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": []
+            }
+        }
+    ]
+}
